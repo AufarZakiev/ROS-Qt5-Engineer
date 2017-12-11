@@ -10,6 +10,17 @@ Node provides "Engineer" robot control using <geometry_msgs::Twist> type topic.
 
 ## Usage
 
+First of all, change following line in `CMakeLists.txt`:
+```
+list(APPEND CMAKE_PREFIX_PATH /home/aufarz/Qt/5.9.3/gcc_64/lib/cmake)
+```
+with proper path to your Qt 5 folder.
+
+Then make it:
+```sh
+catkin_make
+```
+
 Launch ROS Master:
 ```sh
 roscore
