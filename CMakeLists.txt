@@ -1,9 +1,10 @@
 cmake_minimum_required(VERSION 2.8.12)
 project(ros_qt_controller)
 add_compile_options(-std=c++11)
+list(APPEND CMAKE_PREFIX_PATH /home/aufarz/Qt/5.9.3/gcc_64/lib/cmake)
+add_definitions(-DQT_NO_DEBUG=1)
 
 find_package(catkin REQUIRED COMPONENTS roscpp)
-# find_package(Qt5Widgets REQUIRED)
 find_package(Qt5Core REQUIRED)
 find_package(Qt5Network REQUIRED)
 find_package(Qt5Widgets REQUIRED)
@@ -21,12 +22,21 @@ include_directories(src ${catkin_INCLUDE_DIRS})
 include_directories(${Qt5Widgets_INCLUDE_DIRS})
 include_directories(${Qt5Network_INCLUDE_DIRS})
 include_directories(${Qt5Core_INCLUDE_DIRS})
+#include_directories(lib)
+include_directories(headers)
+link_directories(lib)
+#link_directories(/home/aufarz/Qt/5.9.3/gcc_64/lib)
 
-add_executable(twist_control_node src/main.cpp)
-                                   #${QT_MOC_HPP})
+add_executable(twist_control_node src/subscribe_twist.cpp)
 
-target_link_libraries(twist_control_node ${QT_LIBRARIES}
-                          ${catkin_LIBRARIES} Qt5::Core Qt5::Network)
+target_link_libraries(twist_control_node
+                          ${QT_LIBRARIES}
+                          Qt5::Core
+                          Qt5::Network
+                          Qt5::Widgets
+                          ${catkin_LIBRARIES}
+                          robot_control
+                          )
 
 install(TARGETS twist_control_node
   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}

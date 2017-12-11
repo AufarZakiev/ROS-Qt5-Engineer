@@ -29,7 +29,7 @@ public: UDPClient *client;
     QThread *clientThread;
 
     //Signal emited when Client is connected to robot
-Q_SIGNALS:
+signals:
     void connectedToRobot();
 
     //method to disconnect Client
@@ -81,6 +81,7 @@ public:
     void stopPlatformR();
     void stopGripper();
     void stopFlippers();
+
 
 
 

@@ -21,7 +21,7 @@ public:
 
     //the object to change packets, also creates Client, see description in robotcontroller.h
     RobotController *controller;
-    ~Robot();
+    virtual ~Robot();
     Robot();
     /*
      * moves robot platform directly(back or forward)
@@ -113,7 +113,7 @@ public:
     RobotConfiguration* getConfiguration();
 
 
-Q_SIGNALS:
+signals:
     /*
      * this signal is emited when UdpClient gets new packet from robot.
      * The slot from MainWindow handles it and shows the info
@@ -121,7 +121,7 @@ Q_SIGNALS:
     void telemetryChanged(char *data);
     void videoFrameSended(char *data, int length);
 
-public Q_SLOTS:
+public slots:
     void onExec();
 
 public:

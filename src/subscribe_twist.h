@@ -4,20 +4,23 @@
 #include <geometry_msgs/Twist.h>
 #include <ros/ros.h>
 
-#include "robot.h"
+#include "robotsi.h"
 
 // class for subscribing and publishing commands to robot
 // contains ros::subscriber and robot objects
 
-class SubscribeTwist
-{
+class SubscribeTwist {
 public:
-  SubscribeTwist() {}
-  void callbackTwist(const geometry_msgs::Twist &twist);
+    SubscribeTwist();
+
+    void callbackTwist(const geometry_msgs::Twist &twist);
+
+    virtual ~SubscribeTwist();
 
 private:
     ros::NodeHandle n_;
     ros::Subscriber sub_;
-    Robot *robot_;
+    RobotSI *robot_;
 };
+
 #endif // SUBSCRIBE_TWIST_H
