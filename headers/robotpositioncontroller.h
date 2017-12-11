@@ -28,7 +28,7 @@ public:
     void startTimerTask(int angle);
     RobotPositionController(Robot *robot);
     ~RobotPositionController();
-public Q_SLOTS:
+public slots:
     void handleTelemetry(char *data);
     void rotateWaist();
     void rotateElbow();
