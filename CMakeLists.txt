@@ -3,7 +3,7 @@ project(ros_qt_controller)
 add_compile_options(-std=c++11)
 list(APPEND CMAKE_PREFIX_PATH /home/aufarz/Qt/5.9.3/gcc_64/lib/cmake)
 
-find_package(catkin REQUIRED COMPONENTS roscpp)
+find_package(catkin REQUIRED COMPONENTS roscpp tf)
 find_package(Qt5Core REQUIRED)
 find_package(Qt5Network REQUIRED)
 find_package(Qt5Widgets REQUIRED)
